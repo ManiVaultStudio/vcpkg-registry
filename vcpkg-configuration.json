@@ -1,0 +1,9 @@
+{
+  "registries": [
+    {
+      "kind": "git",
+      "repository": "https://github.com/ManiVaultStudio/vcpkg-registry",
+      "packages": ["qt", "HDILib"]
+    }
+  ]
+}

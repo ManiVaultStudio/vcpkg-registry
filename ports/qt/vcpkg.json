@@ -1,0 +1,56 @@
+{
+  "name": "qt",
+  "version": "6.9.3",
+  "description": "Selected pre-built qt binaries from Qt download - no viral licenses",
+  "default-features": [
+            "target-desktop",
+            "opengl-desktop",
+            "openssl",
+            "positioning",
+            "webchannel",
+            "webengine",
+            "imageformats",
+            "qt5compat",
+            "multimedia",
+            "serialport",
+            "thin-arm64"
+  ],
+
+  "features": {
+      "target-desktop": {
+        "description": "Core desktop",
+        "supports": "windows | osx | linux"
+      },
+      "target-android": {"description": "Android mobile"},
+      "target-ios": {"description": "Apple mobile"},
+      "commercial": {},
+      "opengl-es2": {},
+      "opengl-desktop": {
+        "description": "OpenGL desktop",
+        "supports": "windows | osx | linux"
+      },
+      "opengl-dynamic": {},
+      "openssl": {},
+      "positioning": {"description": "in Qt6 this is required for webengine"},
+      "webchannel": {"description": "in Qt6 this is required for webengine"},
+      "webengine": {"description": "Qt webbrowser"},
+      "imageformats": {},
+      "virtualkeyboard": {"description": "# Disabled - GPL"},
+      "datavis3d": {"description": "# Disabled - GPL"},
+      "charts": {"description": "# Disabled - GPL"},
+      "networkauth": {"description": "# Disabled - GPL"},
+      "qtwaylandcompositor": {"description": "# Disabled - GPL"},
+      "qt5compat": {},
+      "multimedia": {},
+      "serialport": {},
+      "thin-arm64": {
+        "description": "Make thin Qt for arm64 on macos",
+        "supports": "osx"
+
+      }, 
+      "thin-x86_64": {
+        "description": "Make thin Qt for x86_64 on macos",
+        "supports": "osx"
+      }
+  }
+}
