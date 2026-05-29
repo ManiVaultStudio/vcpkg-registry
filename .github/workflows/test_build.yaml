@@ -52,7 +52,7 @@ jobs:
         if: startsWith(runner.os, 'Windows')
         shell: pwsh
         run: | 
-          ${{ env.VCPKG_DIR }}/bootstrap-vcpkg.bat -disableMetrics
+          ${{ github.workspace }}/.vcpkg/bootstrap-vcpkg.bat -disableMetrics
           echo ${{ github.workspace }}/.vcpkg/ >> $GITHUB_PATH
 
       - name: Configure tester project   # this drives the port build
