@@ -43,6 +43,13 @@ jobs:
           path: .vcpkg
           ref: ${{ env.VCPKG_COMMIT_SHA }}
 
+      - name: Set vcpkg environmentg (Windows)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          echo "VCPKG_DIR=${{ github.workspace }}/vcpkg" >> $env:GITHUB_ENV
+          echo "VCPKG_ROOT=${{ github.workspace }}/vcpkg" >> $env:GITHUB_ENV
+
       - name: Bootstrap vcpkg (Windows)
         if: startsWith(runner.os, 'Windows')
         run: | 
