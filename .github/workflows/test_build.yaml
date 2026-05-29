@@ -41,22 +41,28 @@ jobs:
           restore-keys: |
             vcpkg-cache-${{ runner.os }}-${{ matrix.os }}-${{ matrix.build-cversion }}-${{ env.VCPKG_COMMIT_SHA }}
   
-      - name: Clone and checkout vcpkg
-        run: |
-          git clone https://github.com/microsoft/vcpkg.git --branch master ${{ env.VCPKG_DIR }}
-          git -C ${{ env.VCPKG_DIR }} checkout ${{ env.VCPKG_COMMIT_SHA }}
+      - name: Clone vcpkg
+        uses: actions/checkout@v6
+        with:
+          repository: microsoft/vcpkg
+          path: .vcpkg
+          ref: ${{ env.VCPKG_COMMIT_SHA }}
 
       - name: Bootstrap vcpkg (Windows)
         if: startsWith(runner.os, 'Windows')
         shell: pwsh
-        run: ${{ env.VCPKG_DIR }}/bootstrap-vcpkg.bat -disableMetrics
+        run: | 
+          ${{ env.VCPKG_DIR }}/bootstrap-vcpkg.bat -disableMetrics
+          echo ${{ github.workspace }}/.vcpkg/ >> $GITHUB_PATH
 
       - name: Configure tester project   # this drives the port build
         if: startsWith(runner.os, 'Windows')
+        working-directory: test/registry-tester
         run: |
           cmake --preset vcpkg-windows \
             -S test/registry-tester \
             -B test/registry-tester/build
 
       - name: Build tester
+        working-directory: test/registry-tester
         run: cmake --build test/registry-tester/build
