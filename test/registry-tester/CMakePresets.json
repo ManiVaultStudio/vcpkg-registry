@@ -7,7 +7,7 @@
 			"cacheVariables": {
 				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
 				"USING_VCPKG": "ON",
-				"VCPKG_TARGET_TRIPLET": "x64-windows-shared",
+				"VCPKG_TARGET_TRIPLET": "x64-windows-v143",
 				"CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded"
 			}
 		}
