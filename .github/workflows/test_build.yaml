@@ -50,18 +50,17 @@ jobs:
 
       - name: Bootstrap vcpkg (Windows)
         if: startsWith(runner.os, 'Windows')
-        shell: pwsh
         run: | 
           ${{ github.workspace }}/.vcpkg/bootstrap-vcpkg.bat -disableMetrics
           echo ${{ github.workspace }}/.vcpkg/ >> $GITHUB_PATH
 
       - name: Configure tester project   # this drives the port build
         if: startsWith(runner.os, 'Windows')
-        working-directory: test/registry-tester
+        working-directory: test\registry-tester
         run: |
           cmake --preset vcpkg-windows \
-            -S test/registry-tester \
-            -B test/registry-tester/build
+            -S . \
+            -B .\build
 
       - name: Build tester
         working-directory: test/registry-tester
