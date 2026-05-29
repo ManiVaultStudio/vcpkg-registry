@@ -53,9 +53,7 @@ jobs:
         if: startsWith(runner.os, 'Windows')
         working-directory: test\registry-tester
         run: |
-          cmake --preset vcpkg-windows \
-            -S . \
-            -B .\build
+          cmake --preset vcpkg-windows -S . -B .\build
 
       - name: Build tester
         working-directory: test\registry-tester
