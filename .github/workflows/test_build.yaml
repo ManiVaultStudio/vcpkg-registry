@@ -68,7 +68,7 @@ jobs:
           dir ${{ github.workspace }}\versions
           dir ${{ github.workspace }}\versions\q-
 
-      - name: Debug vcpkg registry resolution, test qt install, run outside cmake for clarity
+      - name: Debug vcpkg registry resolution
         if: startsWith(runner.os, 'Windows')
         shell: pwsh
         working-directory: test\registry-tester
@@ -78,11 +78,8 @@ jobs:
           Write-Host "=== vcpkg-configuration.json contents ==="
           Get-Content vcpkg-configuration.json
           Write-Host "=== Running vcpkg install with debug ==="
-          & "$env:VCPKG_ROOT\vcpkg.exe" install qt:x64-windows-release `
-            --x-manifest-root=. `
-            --debug `
-            2>&1 | Tee-Object -Variable vcpkgOutput
-          $vcpkgOutput | Select-String -Pattern "registry|filesystem|qt|baseline|error|config" -CaseSensitive:$false
+          & "$env:VCPKG_ROOT\vcpkg.exe" install --debug 2>&1
+        continue-on-error: true
 
       - name: Configure tester project   # this drives the port build
         if: startsWith(runner.os, 'Windows')
