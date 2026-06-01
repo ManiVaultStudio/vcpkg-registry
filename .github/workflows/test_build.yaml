@@ -68,6 +68,32 @@ jobs:
           dir ${{ github.workspace }}\versions
           dir ${{ github.workspace }}\versions\q-
 
+      - name: Set vcpkg config file dynamically (Windows)
+        if: startsWith(runner.os, 'Windows')
+        shell: pwsh
+        run: |
+          echo "VCPKG_FEATURE_FLAGS=registries" >> $env:GITHUB_ENV
+          echo "VCPKG_CONFIG_FILE=${{ github.workspace }}\test\registry-tester\vcpkg-configuration.json" >> $env:GITHUB_ENV
+          $registryPath = "${{ github.workspace }}".Replace("\", "/")
+          $config = @"
+          {
+            "default-registry": {
+              "kind": "git",
+              "repository": "https://github.com/microsoft/vcpkg",
+              "baseline": "${{ env.VCPKG_COMMIT_SHA }}"
+            },
+            "registries": [
+              {
+                "kind": "filesystem",
+                "path": "$registryPath",
+                "packages": ["qt"]
+              }
+            ]
+          }
+          "@
+          $config | Set-Content "${{ github.workspace }}\test\registry-tester\vcpkg-configuration.json"
+          Write-Host "=== Generated vcpkg-configuration.json ==="
+          Get-Content "${{ github.workspace }}\test\registry-tester\vcpkg-configuration.json"
       - name: Debug vcpkg registry resolution
         if: startsWith(runner.os, 'Windows')
         shell: pwsh
