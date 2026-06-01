@@ -1,8 +1,5 @@
 {
   "default": {
-    "qt" : {
-      "baseline": "6.9.3",
-      "port-version": 0
-    }
+    "qt" : { "baseline": "6.9.3", "port-version": 0 }
   }
 }
