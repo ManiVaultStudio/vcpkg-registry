@@ -35,7 +35,6 @@ import sys
 import os
 import requests
 import xml.etree.ElementTree as ElementTree
-from conans import tools
 import tempfile
 import platform
 import urllib.request
