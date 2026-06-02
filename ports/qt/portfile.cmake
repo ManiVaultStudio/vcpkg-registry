@@ -144,11 +144,12 @@ get_platform()
 # ${CURRENT_PACKAGES_DIR} when done
 find_package(Python3 REQUIRED)
 # python qt-installer.py 6.9.3 windows desktop -a win64_msvc2022_64 -p positioning webchannel webengine virtualkeyboard imageformats datavis3d charts networkauth qt5compat
+message(STATUS "BUILD_ARCH:  ${BUILD_ARCH}, TARGET_SELECTED: ${TARGET_SELECTED}, OPENGL_SELECTED: ${OPENGL_SELECTED}, SIMPLE_FEATURES: ${SIMPLE_FEATURES}")
 execute_process(
   COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/qt-installer.py"
           "${VERSION}" "${PLATFORM_NAME}" "desktop"
-          "-a" "${BUILD_ARCH}" "
-          "-p" "${TARGET_SELECTED}" "${OPENGL_SELECTED}" "${SIMPLE_FEATURES}
+          "-a" "${BUILD_ARCH}"
+          "-p" "${TARGET_SELECTED}" "${OPENGL_SELECTED}" "${SIMPLE_FEATURES}"
   RESULT_VARIABLE result
 )
 
