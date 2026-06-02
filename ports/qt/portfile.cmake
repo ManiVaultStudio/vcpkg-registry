@@ -157,6 +157,7 @@ execute_process(
 if(NOT pip_result EQUAL 0)
   message(FATAL_ERROR "Failed to install Python 'requests' module")
 endif()
+message(STATUS "Run the qt-installer")
 execute_process(
   COMMAND "${PYTHON3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/qt-installer.py"
           "${VERSION}" "${PLATFORM_NAME}" "desktop"
