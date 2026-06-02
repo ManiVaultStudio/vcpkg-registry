@@ -10,7 +10,8 @@
             "webengine",
             "imageformats",
             "qt5compat",
-            "multimedia"
+            "multimedia",
+            "serialport"
   ],
 
   "features": {
