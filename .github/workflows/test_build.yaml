@@ -76,8 +76,7 @@ jobs:
         working-directory: test\registry-tester
         run: |
           echo "python at $env:pythonLocation"
-          echo "$PYTHON_PATH=$env:pythonLocation\python.exe">> $env:GITHUB_ENV
-          cmake --preset vcpkg-windows -S . -B .\build -DPYTHON3_EXECUTABLE="$env:PYTHON_PATH"
+          cmake --preset vcpkg-windows -S . -B .\build -DPYTHON3_EXECUTABLE="$env:pythonLocation/python.exe"
 
       - name: Upload vcpkg install log on failure
         if: failure()
