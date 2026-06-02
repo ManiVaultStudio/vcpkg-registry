@@ -168,6 +168,7 @@ execute_process(
           "${VERSION}" "${PLATFORM_NAME}" "${TARGET_SELECTED}"
           "-a" "${BUILD_ARCH}"
           "-p" ${SIMPLE_FEATURES}
+  WORKING_DIRECTORY "${CURRENT_PACKAGES_DIR}"
   RESULT_VARIABLE result
 )
 
@@ -175,6 +176,13 @@ if(NOT result EQUAL 0)
   message(FATAL_ERROR "qt-installer.py failed for triplet ${VCPKG_TARGET_TRIPLET}")
 endif()
 
+file(GLOB QT_ARCH_DIRS "${CURRENT_PACKAGES_DIR}/${VERSION}/*")
+foreach(arch_dir ${QT_ARCH_DIRS})
+    file(COPY "${arch_dir}/" DESTINATION "${CURRENT_PACKAGES_DIR}")
+endforeach()
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/${VERSION}")
+
 # vcpkg requires a copyright file
-#file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/copyright"
-#     DESTINATION "${CURRENT_PACKAGES_DIR}/share/mylib")
+file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/copyright"
+     DESTINATION "${CURRENT_PACKAGES_DIR}/share/qt")
+
