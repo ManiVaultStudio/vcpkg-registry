@@ -8,7 +8,7 @@ set(TARGET_VARIANTS "target-desktop" "target-android" "target-ios")
 set(TARGET_SELECTED "")
 set(OPENGL_VARIANTS "opengl-es2" "opengl-desktop" "opengl-dynamic")
 set(OPENGL_SELECTED "" )
-set(THIN_VARIANTS "thin-arm64" "thin-x86_64" )
+set(THIN_VARIANTS "thin-arm64" "thin-x86-64" )
 set(THIN_SELECTED "")
 
 # setup maps in json string literals using cmake "bracket arguments"

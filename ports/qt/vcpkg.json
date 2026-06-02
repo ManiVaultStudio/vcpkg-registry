@@ -48,7 +48,7 @@
         "supports": "osx"
 
       }, 
-      "thin-x86_64": {
+      "thin-x86-64": {
         "description": "Make thin Qt for x86_64 on macos",
         "supports": "osx"
       }
