@@ -26,11 +26,11 @@ set(VALID_ARCH_STRS
 
 set(MSVC_TOOLSET_MAP [=[
 {
-    "140": "msvc2015",
-    "141": "msvc2017",
-    "142": "msvc2019",
-    "143": "msvc2022",
-    "145": "msvc2026"
+    "v140": "msvc2015",
+    "v141": "msvc2017",
+    "v142": "msvc2019",
+    "v143": "msvc2022",
+    "v145": "msvc2026"
 }
 ]=])
 
@@ -55,16 +55,16 @@ function(get_platform)
 endfunction()
 
 function(get_compiler_name)
-  # If on Windows translate the MSVC_TOOLSET_VERSION to a COMPILER_NAME 
+  # If on Windows translate the VCPKG_PLATFORM_TOOLSET  to a COMPILER_NAME 
   # in the calling scope
   # If not Windows then the compiler name is the empty string
   # Uses the MSVC_TOOLSET_MAP
-  # FATAL_ERROR if MSVC_TOOLSET_VERSION is missing in map.
+  # FATAL_ERROR if VCPKG_PLATFORM_TOOLSET  is missing in map.
   set(result "")
   if (VCPKG_TARGET_IS_WINDOWS)
-    string(JSON result ERROR_VARIABLE json_error GET "${MSVC_TOOLSET_MAP}" "${MSVC_TOOLSET_VERSION}")
+    string(JSON result ERROR_VARIABLE json_error GET "${MSVC_TOOLSET_MAP}" "${VCPKG_PLATFORM_TOOLSET}")
     if(json_error)
-      message(FATAL_ERROR "No MSVC version mapping found for ${MSVC_TOOLSET_VERSION}")
+      message(FATAL_ERROR "No MSVC version mapping found for ${VCPKG_PLATFORM_TOOLSET}")
     endif()
   endif()
   set(COMPILER_NAME "${result}" PARENT_SCOPE)
