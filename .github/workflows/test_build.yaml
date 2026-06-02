@@ -76,6 +76,7 @@ jobs:
         working-directory: test\registry-tester
         env:
           PYTHON3_EXECUTABLE: "${{ env.pythonLocation }}\\python.exe"
+          VCPKG_KEEP_ENV_VARS: "PYTHON3_EXECUTABLE"
         run: |
           $python = Join-Path $env:pythonLocation "python.exe"
           echo "python at $python"
