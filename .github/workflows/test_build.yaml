@@ -75,6 +75,7 @@ jobs:
         if: startsWith(runner.os, 'Windows')
         working-directory: test\registry-tester
         run: |
+          echo "python at $env:pythonLocation"
           cmake --preset vcpkg-windows -S . -B .\build -DPYTHON3_EXECUTABLE="$env:pythonLocation"
 
       - name: Upload vcpkg install log on failure

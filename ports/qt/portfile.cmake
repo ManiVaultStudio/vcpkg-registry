@@ -105,7 +105,7 @@ function(get_arch)
   else()
     string(JOIN "_" result "$OS_ARCH_PREFIX" "$OS_ARCH_SUFFIX")
   endif()
-  set(BUILD_ARCH "$result" PARENT_SCOPE)
+  set(BUILD_ARCH "${result}" PARENT_SCOPE)
 
 endfunction()
 
@@ -144,6 +144,8 @@ get_platform()
 # ${CURRENT_PACKAGES_DIR} when done
 # python qt-installer.py 6.9.3 windows desktop -a win64_msvc2022_64 -p positioning webchannel webengine virtualkeyboard imageformats datavis3d charts networkauth qt5compat
 message(STATUS "BUILD_ARCH:  ${BUILD_ARCH}, TARGET_SELECTED: ${TARGET_SELECTED}, OPENGL_SELECTED: ${OPENGL_SELECTED}, SIMPLE_FEATURES: ${SIMPLE_FEATURES}")
+
+  message(STATUS "Using python at ${PYTHON3_EXECUTABLE}")
 execute_process(
   COMMAND "${PYTHON3_EXECUTABLE}" -m pip install requests
   RESULT_VARIABLE pip_result
