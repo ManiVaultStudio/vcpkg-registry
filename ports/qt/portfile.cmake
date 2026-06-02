@@ -162,9 +162,9 @@ endif()
 message(STATUS "Run the qt-installer")
 execute_process(
   COMMAND "${PYTHON3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/qt-installer.py"
-          "${VERSION}" "${PLATFORM_NAME}" "desktop"
+          "${VERSION}" "${PLATFORM_NAME}" "${TARGET_SELECTED}"
           "-a" "${BUILD_ARCH}"
-          "-p" "${TARGET_SELECTED}" "${OPENGL_SELECTED}" "${SIMPLE_FEATURES}"
+          "-p" "${OPENGL_SELECTED}" "${SIMPLE_FEATURES}"
   RESULT_VARIABLE result
 )
 
