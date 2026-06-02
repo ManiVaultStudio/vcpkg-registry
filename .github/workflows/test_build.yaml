@@ -70,7 +70,7 @@ jobs:
         if: startsWith(runner.os, 'Windows')
         working-directory: test\registry-tester
         run: |
-          cmake --trace-expand --preset vcpkg-windows -S . -B .\build
+          cmake --preset vcpkg-windows -S . -B .\build
 
       - name: Upload vcpkg install log on failure
         if: failure()
