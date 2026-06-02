@@ -151,7 +151,7 @@ if(NOT PYTHON3_EXECUTABLE)
 endif()
 message(STATUS "Using python at ${PYTHON3_EXECUTABLE}")
 execute_process(
-  COMMAND "${PYTHON3_EXECUTABLE}" -m pip install requests
+  COMMAND "${PYTHON3_EXECUTABLE}" -m pip install requests packaging
   RESULT_VARIABLE pip_result
 )
 if(NOT pip_result EQUAL 0)
