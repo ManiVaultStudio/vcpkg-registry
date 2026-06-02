@@ -147,6 +147,7 @@ def findPackage(
 
 
 def install_archives(archives, archives_url, full_version):
+    seven_zip = os.environ.get("SEVEN_ZIP_EXECUTABLE", "7z")
     for archive in archives:
         url = f"{archives_url}{full_version}{archive}"
 
@@ -157,9 +158,9 @@ def install_archives(archives, archives_url, full_version):
         sys.stdout.write("\033[K")
         print(f"Extracting {archive}...")  # , end="\r")
         if platform.system() == "Windows":
-            os.system("7z x package.7z >NUL")
+            os.system(f"{seven_zip} x package.7z >NUL")
         else:
-            os.system("7z x package.7z 1>/dev/null")
+            os.system(f"{seven_zip} x package.7z 1>/dev/null")
 
         os.remove("package.7z")
 

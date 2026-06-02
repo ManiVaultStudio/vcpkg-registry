@@ -76,10 +76,13 @@ jobs:
         working-directory: test\registry-tester
         env:
           PYTHON3_EXECUTABLE: "${{ env.pythonLocation }}\\python.exe"
-          VCPKG_KEEP_ENV_VARS: "PYTHON3_EXECUTABLE"
+          VCPKG_KEEP_ENV_VARS: "PYTHON3_EXECUTABLE;SEVEN_ZIP_EXECUTABLE"
         run: |
           $python = Join-Path $env:pythonLocation "python.exe"
           echo "python at $python"
+          $sevenZip = (Get-Command 7z).Source
+          echo "7z at $sevenZip"
+          $env:SEVEN_ZIP_EXECUTABLE = $sevenZip
           cmake --preset vcpkg-windows -S . -B .\build  
 
       - name: Upload vcpkg install log on failure
