@@ -66,11 +66,16 @@ jobs:
           dir ${{ github.workspace }}\versions
           dir ${{ github.workspace }}\versions\q-
 
+      - name: Setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13' 
+
       - name: Configure tester project   # this drives the port build
         if: startsWith(runner.os, 'Windows')
         working-directory: test\registry-tester
         run: |
-          cmake --preset vcpkg-windows -S . -B .\build
+          cmake --preset vcpkg-windows -S . -B .\build -DPYTHON3_EXECUTABLE="$python"
 
       - name: Upload vcpkg install log on failure
         if: failure()

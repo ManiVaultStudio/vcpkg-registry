@@ -146,14 +146,14 @@ find_program(PYTHON3 NAMES python3 python REQUIRED)
 # python qt-installer.py 6.9.3 windows desktop -a win64_msvc2022_64 -p positioning webchannel webengine virtualkeyboard imageformats datavis3d charts networkauth qt5compat
 message(STATUS "BUILD_ARCH:  ${BUILD_ARCH}, TARGET_SELECTED: ${TARGET_SELECTED}, OPENGL_SELECTED: ${OPENGL_SELECTED}, SIMPLE_FEATURES: ${SIMPLE_FEATURES}")
 execute_process(
-  COMMAND "${PYTHON3}" -m pip install requests
+  COMMAND "${PYTHON3_EXECUTABLE}" -m pip install requests
   RESULT_VARIABLE pip_result
 )
 if(NOT pip_result EQUAL 0)
   message(FATAL_ERROR "Failed to install Python 'requests' module")
 endif()
 execute_process(
-  COMMAND "${PYTHON3}" "${CMAKE_CURRENT_LIST_DIR}/qt-installer.py"
+  COMMAND "${PYTHON3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/qt-installer.py"
           "${VERSION}" "${PLATFORM_NAME}" "desktop"
           "-a" "${BUILD_ARCH}"
           "-p" "${TARGET_SELECTED}" "${OPENGL_SELECTED}" "${SIMPLE_FEATURES}"
