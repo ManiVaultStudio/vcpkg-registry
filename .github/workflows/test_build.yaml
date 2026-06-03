@@ -35,6 +35,7 @@ jobs:
           key: vcpkg-cache-${{ runner.os }}-${{ matrix.os }}-${{ matrix.build-cversion }}-${{ env.VCPKG_COMMIT_SHA }}-${{ hashFiles('**/vcpkg.json', '**/vcpkg-overlays/**') }}
           restore-keys: |
             vcpkg-cache-${{ runner.os }}-${{ matrix.os }}-${{ matrix.build-cversion }}-${{ env.VCPKG_COMMIT_SHA }}
+
   
       - name: Clone vcpkg
         uses: actions/checkout@v6
@@ -47,6 +48,8 @@ jobs:
         shell: pwsh
         run: |
           echo "VCPKG_ROOT=${{ github.workspace }}\.vcpkg" >> $env:GITHUB_ENV
+          echo "VCPKG_BINARY_SOURCES=clear;http,${{ secrets.VCPKG_ARTIFACTORY_URL }}/{name}/{version}/{triplet}/{sha},readwrite,Authorization: Bearer ${{ secrets.VCPKG_ARTIFACTORY_TOKEN }}" >> $env:GITHUB_ENV
+
 
       - name: Bootstrap vcpkg (Windows)
         if: startsWith(runner.os, 'Windows')
