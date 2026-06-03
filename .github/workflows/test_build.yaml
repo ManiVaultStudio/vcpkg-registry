@@ -72,8 +72,8 @@ jobs:
 
       - name: Install required Python packages
         run: |
-          $env:PYTHON3_EXECUTABLE -m pip install --upgrade pip
-          $env:PYTHON3_EXECUTABLE -m pip install requests packaging colorama
+          & "$env:PYTHON3_EXECUTABLE" -m pip install --upgrade pip
+          & "$env:PYTHON3_EXECUTABLE" -m pip install requests packaging colorama
 
       - name: Configure tester project   # this drives the port build
         shell: pwsh
