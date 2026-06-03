@@ -71,12 +71,12 @@ jobs:
           echo "TEST_WORKDIR=$test_workdir" >> $env:GITHUB_ENV
 
       - name: Configure tester project   # this drives the port build
-        working-directory: "$env{TEST_WORKDIR}"
         shell: pwsh
         env:
           VCPKG_KEEP_ENV_VARS: "PYTHON3_EXECUTABLE;SEVEN_ZIP_EXECUTABLE"
           VCPKG_BINARY_SOURCES: "clear;http,${{ secrets.VCPKG_ARTIFACTORY_URL }}/{name}/{version}/{triplet}/{sha},readwrite,Authorization: Bearer ${{ secrets.VCPKG_ARTIFACTORY_TOKEN }}" 
         run: |
+          Set-Location "$env:TEST_WORKDIR"
           $sevenZip = (Get-Command 7z).Source
           echo "7z at $sevenZip"
           $env:SEVEN_ZIP_EXECUTABLE = $sevenZip
@@ -94,4 +94,6 @@ jobs:
       - name: Build tester
         working-directory: "$env{TEST_WORKDIR}"
         shell: pwsh
-        run: cmake --build .\build
+        run: | 
+          Set-Location "$env:TEST_WORKDIR"
+          cmake --build .\build
