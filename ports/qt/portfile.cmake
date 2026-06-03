@@ -175,8 +175,8 @@ execute_process(
 )
 
 if(NOT result EQUAL 0)
-  message(STATUS "qt-installer.py stdout:\n${installer_output}")
-  message(STATUS "qt-installer.py stderr:\n${installer_error}")
+  message(STATUS "qt-installer.py stdout: ${installer_output}")
+  message(STATUS "qt-installer.py stderr: ${installer_error}")
   message(FATAL_ERROR "qt-installer.py failed for triplet ${VCPKG_TARGET_TRIPLET}")
 endif()
 
