@@ -54,7 +54,8 @@ jobs:
       - name: Bootstrap vcpkg and python
         shell: pwsh
         run: | 
-          echo "VCPKG_ROOT=${{ github.workspace }}\.vcpkg" >> $env:GITHUB_ENV
+          $vcpkgRoot = Join-Path "${{ github.workspace }}" ".vcpkg"
+          echo "VCPKG_ROOT=$vcpkgRoot" >> $env:GITHUB_ENV
           if ($env:RUNNER_OS -eq "Windows") {
             & "${{ github.workspace }}\.vcpkg\bootstrap-vcpkg.bat" -disableMetrics
             $python = Join-Path $env:pythonLocation "python.exe"
@@ -89,7 +90,8 @@ jobs:
           $preset = if ($IsWindows) { "vcpkg-windows" }
             elseif ($IsLinux) { "vcpkg-linux" }
             else { "vcpkg-macos" }
-          cmake --preset $preset -S . -B .\build  
+          $buildDir = Join-Path "." "build"
+          cmake --preset $preset -S . -B $buildDir  
 
       - name: Upload vcpkg install log on failure
         if: failure()

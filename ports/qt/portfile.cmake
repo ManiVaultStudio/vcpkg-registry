@@ -169,10 +169,14 @@ execute_process(
           "-a" "${BUILD_ARCH}"
           "-p" ${SIMPLE_FEATURES}
   WORKING_DIRECTORY "${CURRENT_PACKAGES_DIR}"
+  OUTPUT_VARIABLE installer_output
+  ERROR_VARIABLE  installer_error
   RESULT_VARIABLE result
 )
 
 if(NOT result EQUAL 0)
+  message(STATUS "qt-installer.py stdout:\n${installer_output}")
+  message(STATUS "qt-installer.py stderr:\n${installer_error}")
   message(FATAL_ERROR "qt-installer.py failed for triplet ${VCPKG_TARGET_TRIPLET}")
 endif()
 
