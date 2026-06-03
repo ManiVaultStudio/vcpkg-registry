@@ -68,7 +68,6 @@ jobs:
           echo "PYTHON3_EXECUTABLE=$python" >> $env:GITHUB_ENV
 
       - name: Configure tester project   # this drives the port build
-        if: startsWith(runner.os, 'Windows')
         working-directory: test\registry-tester
         shell: pwsh
         env:
@@ -91,4 +90,5 @@ jobs:
           path: test/registry-tester/build/vcpkg-manifest-install.log
       - name: Build tester
         working-directory: test\registry-tester
+        shell: pwsh
         run: cmake --build .\build
