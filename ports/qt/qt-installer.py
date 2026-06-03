@@ -44,6 +44,7 @@ def reset_terminal_settings():
 
 
 if __name__ == "__main__":
+    print("**** In qt-installer***")
     if platform.system() == "Windows":
         colorama.init()
 
