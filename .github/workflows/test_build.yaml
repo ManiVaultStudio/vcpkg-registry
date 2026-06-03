@@ -48,8 +48,6 @@ jobs:
         shell: pwsh
         run: |
           echo "VCPKG_ROOT=${{ github.workspace }}\.vcpkg" >> $env:GITHUB_ENV
-          echo "VCPKG_BINARY_SOURCES=clear;http,${{ secrets.VCPKG_ARTIFACTORY_URL }}/{name}/{version}/{triplet}/{sha},readwrite,Authorization: Bearer ${{ secrets.VCPKG_ARTIFACTORY_TOKEN }}" >> $env:GITHUB_ENV
-
 
       - name: Bootstrap vcpkg (Windows)
         if: startsWith(runner.os, 'Windows')
@@ -80,6 +78,7 @@ jobs:
         env:
           PYTHON3_EXECUTABLE: "${{ env.pythonLocation }}\\python.exe"
           VCPKG_KEEP_ENV_VARS: "PYTHON3_EXECUTABLE;SEVEN_ZIP_EXECUTABLE"
+          VCPKG_BINARY_SOURCES: "clear;http,${{ secrets.VCPKG_ARTIFACTORY_URL }}/{name}/{version}/{triplet}/{sha},readwrite,Authorization: Bearer ${{ secrets.VCPKG_ARTIFACTORY_TOKEN }}" 
         run: |
           $python = Join-Path $env:pythonLocation "python.exe"
           echo "python at $python"
