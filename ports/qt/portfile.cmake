@@ -219,6 +219,17 @@ if(VCPKG_TARGET_IS_OSX)
                     ERROR_QUIET
                 )
             endif()
+            string(REGEX MATCHALL "path @loader_path/../../../" 
+                rpath_matches "${otool_output}")
+            list(LENGTH rpath_matches rpath_count)
+            if(rpath_count GREATER 1)
+                message(STATUS "Deduplicating @loader_path/../../../ rpath in ${binary}")
+                execute_process(
+                    COMMAND install_name_tool 
+                        -delete_rpath "@loader_path/../../../" "${binary}"
+                    ERROR_QUIET
+                )
+            endif()
         endif()
     endforeach()
 endif()
