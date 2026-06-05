@@ -187,6 +187,13 @@ foreach(arch_dir ${QT_ARCH_DIRS})
 endforeach()
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/${VERSION}")
 
+# Fix the ICU file location (needed on Linux) - there are in the root
+file(GLOB ICU_LIBS "${CURRENT_PACKAGES_DIR}/libicu*.so*")
+if(ICU_LIBS)
+    file(COPY ${ICU_LIBS} DESTINATION "${CURRENT_PACKAGES_DIR}/lib")
+    file(REMOVE ${ICU_LIBS})
+endif()
+
 # vcpkg requires a copyright file
 file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/copyright"
      DESTINATION "${CURRENT_PACKAGES_DIR}/share/qt")
