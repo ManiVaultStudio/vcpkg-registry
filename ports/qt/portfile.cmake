@@ -195,25 +195,32 @@ if(ICU_LIBS)
 endif()
 
 # fix rpaths for MacOS tools 
-if(VCPKG_TARGET_IS_OSX OR VCPKG_TARGET_IS_IOS)
-  execute_process(
-      COMMAND otool -l "${CURRENT_PACKAGES_DIR}/libexec/rcc"
-      OUTPUT_VARIABLE otool_output
-  )
-  message(STATUS "${otool_output}")
-  #file(GLOB QT_TOOLS "${CURRENT_PACKAGES_DIR}/libexec/*" "${CURRENT_PACKAGES_DIR}/bin/*")
-  #foreach(tool ${QT_TOOLS})
-  #    if(NOT IS_DIRECTORY "${tool}")
-  #        message(STATUS "Fix rpath for tool ${tool}")
-  #        execute_process(
-  #            COMMAND install_name_tool -add_rpath "@executable_path/../lib" "${tool}"
-  #            RESULT_VARIABLE rpath_result
-  #        )
-  #        if(NOT rpath_result EQUAL 0)
-  #            message(WARNING "Failed to add rpath to ${tool}")
-  #        endif()
-  #    endif()
-  #endforeach()
+if(VCPKG_TARGET_IS_OSX)
+    file(GLOB_RECURSE MACHO_BINARIES 
+        "${CURRENT_PACKAGES_DIR}/bin/*"
+        "${CURRENT_PACKAGES_DIR}/libexec/*"
+        "${CURRENT_PACKAGES_DIR}/lib/*.dylib"
+    )
+    foreach(binary ${MACHO_BINARIES})
+        if(NOT IS_DIRECTORY "${binary}")
+            execute_process(
+                COMMAND otool -l "${binary}"
+                OUTPUT_VARIABLE otool_output
+                ERROR_QUIET
+            )
+            string(REGEX MATCHALL "path @loader_path/../lib" 
+                rpath_matches "${otool_output}")
+            list(LENGTH rpath_matches rpath_count)
+            if(rpath_count GREATER 1)
+                message(STATUS "Deduplicating @loader_path/../lib rpath in ${binary}")
+                execute_process(
+                    COMMAND install_name_tool 
+                        -delete_rpath "@loader_path/../lib" "${binary}"
+                    ERROR_QUIET
+                )
+            endif()
+        endif()
+    endforeach()
 endif()
 
 # vcpkg requires a copyright file
