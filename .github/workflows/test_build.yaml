@@ -69,7 +69,7 @@ jobs:
           echo "VCPKG_CONFIG_FILE=$config-path" >> $env:GITHUB_ENV
           Add-Content -Path $env:GITHUB_ENV -Value "PYTHON3_EXECUTABLE=$python"
           $test_workdir = Join-Path ${{ github.workspace }} test registry-tester
-          echo "TEST_WORKDIR=$test_workdir" >> $env:GITHUB_ENV
+          Add-Content -Path $env:GITHUB_ENV -Value "TEST_WORKDIR=$test_workdir"
 
       - name: Install required Python packages
         shell: pwsh
