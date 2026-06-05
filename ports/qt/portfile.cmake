@@ -51,6 +51,8 @@ function(get_platform)
     set(PLATFORM_NAME "linux" PARENT_SCOPE)
   elseif (VCPKG_TARGET_IS_OSX OR VCPKG_TARGET_IS_IOS)
     set(PLATFORM_NAME "mac")
+  else()
+    message(FATAL_ERROR "Could not identify platform from VCPKG_TARGET_IS_OSX: ${VCPKG_TARGET_IS_OSX} or VCPKG_TARGET_IS_IOS: ${VCPKG_TARGET_IS_IOS}")
   endif()
 endfunction()
 
