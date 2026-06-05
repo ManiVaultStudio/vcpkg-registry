@@ -199,6 +199,7 @@ if(VCPKG_TARGET_IS_OSX OR VCPKG_TARGET_IS_IOS)
   file(GLOB QT_TOOLS "${CURRENT_PACKAGES_DIR}/libexec/*" "${CURRENT_PACKAGES_DIR}/bin/*")
   foreach(tool ${QT_TOOLS})
       if(NOT IS_DIRECTORY "${tool}")
+          message(STATUS "Fix rpath for tool ${tool}")
           execute_process(
               COMMAND install_name_tool -add_rpath "@executable_path/../lib" "${tool}"
               RESULT_VARIABLE rpath_result
