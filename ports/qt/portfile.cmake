@@ -240,7 +240,7 @@ file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/copyright"
      DESTINATION "${CURRENT_PACKAGES_DIR}/share/qt")
 
 if(VCPKG_TARGET_IS_OSX)
-  set(CMAKE_INSTALL_RPATH "@executable_path/../Frameworks")
+  set(CMAKE_INSTALL_RPATH "@loader_path/../Frameworks")
   set(VCPKG_FIXUP_MACHO_RPATH OFF)
 endif()
 
