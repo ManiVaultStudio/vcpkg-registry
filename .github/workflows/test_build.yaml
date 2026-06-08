@@ -77,11 +77,13 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install requests packaging colorama
 
-      - name: Install Linux build dependencies
+      - name: Install Linux build dependencies and add pem chain to cert store
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential cmake ninja-build pkg-config
+          sudo cp lkebartifactory.nl.crt /usr/local/share/ca-certificates/
+          sudo update-ca-certificates
 
       - name: Configure tester project   # this drives the port build
         shell: pwsh
