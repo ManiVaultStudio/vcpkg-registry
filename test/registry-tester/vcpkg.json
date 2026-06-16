@@ -3,6 +3,9 @@
     { 
       "name": "qt", 
       "features": [ "target-desktop" ] 
+    },
+    { 
+      "name": "vtk" 
     }
   ]
 }
