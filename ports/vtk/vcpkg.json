@@ -13,7 +13,6 @@
   "default-features": [
             "qt",
             "mpi",
-            "fPIC",
             "minimal",
             "ioxml",
             "ioexport",
@@ -26,7 +25,6 @@
   "features": {
       "qt": {"description": "Build with Qt support"},
       "mpi": {"description": "Build with MPI support"},
-      "fPIC": {"description": "Build with fPIC support"},
       "minimal": {"description": "Build minimal version"},
       "ioxml": {"description": "Build with XML I/O support"},
       "ioexport": {"description": "Build with export I/O support"},
