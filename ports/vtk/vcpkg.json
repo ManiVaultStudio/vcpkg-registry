@@ -16,10 +16,10 @@
             "minimal",
             "ioxml",
             "ioexport",
-            "mpi_minimal",
+            "mpi-minimal",
             "ioxdmf3",
             "iolegacy",
-            "basic_viewer"
+            "basic-viewer"
   ],
 
   "features": {
@@ -28,10 +28,10 @@
       "minimal": {"description": "Build minimal version"},
       "ioxml": {"description": "Build with XML I/O support"},
       "ioexport": {"description": "Build with export I/O support"},
-      "mpi_minimal": {"description": "Build minimal MPI version"},
+      "mpi-minimal": {"description": "Build minimal MPI version"},
       "ioxdmf3": {"description": "Build with XDMF3 I/O support"},
       "iolegacy": {"description": "Build with legacy I/O support"},
-      "basic_viewer": {"description": "Build basic viewer"},
+      "basic-viewer": {"description": "Build basic viewer"},
       "thin-arm64": {
         "description": "Make thin vtk for arm64 on macos",
         "supports": "osx"
