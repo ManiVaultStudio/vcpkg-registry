@@ -8,7 +8,9 @@
         { 
       "name": "qt", 
       "features": [ "target-desktop" ] 
-    }
+    },
+    { "name": "vcpkg-cmake", "host": true },
+    { "name": "vcpkg-cmake-config", "host": true }
   ],
   "default-features": [
             "qt",
@@ -42,4 +44,5 @@
         "supports": "osx"
       }
   }
+
 }
