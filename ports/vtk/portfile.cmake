@@ -138,7 +138,6 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS VTK_FEATURE_OPTIONS
     "ioexport" Module_vtkIOExport
     "ioxdmf3" Module_vtkIOXdmf3
     "iolegacy" Module_vtkIOLegacy
-    "mpi-minimal" Module_vtkIOParallelXML 
     "mpi-minimal" Module_vtkParallelMPI 
 )
 
