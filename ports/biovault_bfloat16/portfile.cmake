@@ -8,5 +8,12 @@ vcpkg_from_github(
 # This is a header only library
 file(INSTALL "${SOURCE_PATH}/biovault_bfloat16.h" DESTINATION "${CURRENT_PACKAGES_DIR}/include/bfloat16")
 
+# Install a CMake config so find_package(biovault_bfloat16) works
+configure_file(
+    "${CMAKE_CURRENT_LIST_DIR}/biovault_bfloat16-config.cmake.in"
+    "${CURRENT_PACKAGES_DIR}/share/${PORT}/biovault_bfloat16-config.cmake"
+    @ONLY
+)
+
 # Handle copyright
 file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME "copyright")

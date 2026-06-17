@@ -1,0 +1,8 @@
+include(CMakeFindDependencyMacro)
+
+if(NOT TARGET biovault_bfloat16::biovault_bfloat16)
+    add_library(biovault_bfloat16::biovault_bfloat16 INTERFACE IMPORTED)
+    set_target_properties(biovault_bfloat16::biovault_bfloat16 PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/../../include"
+    )
+endif()
