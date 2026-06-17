@@ -148,7 +148,6 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS VTK_FEATURE_OPTIONS
     "qt" VTK_BUILD_QT_DESIGNER_PLUGIN
     "minimal" VTK_Group_Rendering
     "basic-viewer" VTK_Group_StandAlone
-    "basic-viewer" VTK_Group_Rendering
     "basic-viewer" VTK_ENABLE_WRAPPING
     "basic-viewer" VTK_MODULE_ENABLE_VTK_AcceleratorsVTKmCore
     "basic-viewer" VTK_MODULE_ENABLE_VTK_AcceleratorsVTKmDataModel
