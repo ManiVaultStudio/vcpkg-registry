@@ -10,7 +10,7 @@
       "path": "../..",
       "baseline": "default",
       "packages": [
-        "qt", "vtk"
+        "qt", "vtk", "biovault-bfloat16"
       ]
     }
   ]
