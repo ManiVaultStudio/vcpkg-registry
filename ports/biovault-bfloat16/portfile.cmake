@@ -10,8 +10,8 @@ file(INSTALL "${SOURCE_PATH}/biovault_bfloat16.h" DESTINATION "${CURRENT_PACKAGE
 
 # Install a CMake config so find_package(biovault_bfloat16) works
 configure_file(
-    "${CMAKE_CURRENT_LIST_DIR}/biovault_bfloat16-config.cmake.in"
-    "${CURRENT_PACKAGES_DIR}/share/${PORT}/biovault_bfloat16-config.cmake"
+    "${CMAKE_CURRENT_LIST_DIR}/biovault-bfloat16-config.cmake.in"
+    "${CURRENT_PACKAGES_DIR}/share/${PORT}/biovault-bfloat16-config.cmake"
     @ONLY
 )
 
