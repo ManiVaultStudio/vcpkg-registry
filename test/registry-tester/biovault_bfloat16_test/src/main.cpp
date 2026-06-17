@@ -1,4 +1,4 @@
-#include "biovault_bfloat16.h"
+#include <bfloat16/biovault_bfloat16.h>
 #include <cmath>
 
 int main()
