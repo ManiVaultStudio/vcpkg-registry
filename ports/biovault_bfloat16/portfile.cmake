@@ -6,7 +6,7 @@ vcpkg_from_github(
 )
 
 # This is a header only library
-file(INSTALL "${SOURCE_PATH}/biovault_bfloat16.h" DESTINATION "${CURRENT_PACKAGES_DIR}/include/biovault_bfloat16.h")
+file(INSTALL "${SOURCE_PATH}/biovault_bfloat16.h" DESTINATION "${CURRENT_PACKAGES_DIR}/include/bfloat16")
 
 # Handle copyright
 file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME "copyright")
