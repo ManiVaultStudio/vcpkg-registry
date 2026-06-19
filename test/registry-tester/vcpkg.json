@@ -12,6 +12,9 @@
     },
     { 
       "name": "hdilib" 
+    },
+    { 
+      "name": "flann"
     }
   ]
 }
