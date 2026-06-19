@@ -87,6 +87,12 @@ jobs:
           sudo cp lkebartifactory.nl.crt /usr/local/share/ca-certificates/
           sudo update-ca-certificates
 
+      - name: Install MacOS build dependencies
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install libomp
+
       - name: Configure tester project   # this drives the port build
         shell: pwsh
         env:
