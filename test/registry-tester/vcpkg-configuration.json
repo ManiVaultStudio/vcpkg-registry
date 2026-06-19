@@ -10,7 +10,7 @@
       "path": "../..",
       "baseline": "default",
       "packages": [
-        "biovault-bfloat16", "hdilib","qt", "vtk"
+        "biovault-bfloat16", "hdilib","kompute","qt", "vtk"
       ]
     }
   ]
