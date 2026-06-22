@@ -10,6 +10,7 @@
 +    # Remove compiler definitions incorrectly injected into link interface
 +    set_target_properties(${PROJECT} PROPERTIES INTERFACE_LINK_LIBRARIES "")
  endif()
+
 --- a/hdi/utils/CMakeLists.txt
 +++ b/hdi/utils/CMakeLists.txt
 @@ -68,6 +68,7 @@ if(${HDILib_INSTALL})
@@ -21,6 +22,7 @@
      )
 +    set_target_properties(${PROJECT} PROPERTIES INTERFACE_LINK_LIBRARIES "")
  endif()
+
 --- a/hdi/data/CMakeLists.txt
 +++ b/hdi/data/CMakeLists.txt
 @@ -44,6 +44,7 @@ if(${HDILib_INSTALL})
