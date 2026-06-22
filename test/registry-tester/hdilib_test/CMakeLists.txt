@@ -16,3 +16,4 @@ find_package(HDILib COMPONENTS hdidimensionalityreduction hdiutils hdidata CONFI
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE ${HDILib_LINK_LIBS})
+target_include_directories(${PROJECT_NAME} PRIVATE ${HDILib_INCLUDE_DIR})
