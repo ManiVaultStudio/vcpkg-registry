@@ -1,5 +1,34 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -1,0 +1,0 @@
--  flann::flann_cpp_s
-+  flann::flann_cpp
+--- a/hdi/dimensionality_reduction/CMakeLists.txt
++++ b/hdi/dimensionality_reduction/CMakeLists.txt
+@@ -104,6 +104,14 @@ if(${HDILib_INSTALL})
+     install(EXPORT ${PROJECT}Targets
+             FILE ${PROJECT}Targets.cmake
+             NAMESPACE HDI::
+             DESTINATION lib/cmake/HDILib
+             COMPONENT HDIDIMENSIONALITYREDUCTION_TARGET
+     )
++    # Remove compiler definitions incorrectly injected into link interface
++    set_target_properties(${PROJECT} PROPERTIES INTERFACE_LINK_LIBRARIES "")
+ endif()
+--- a/hdi/utils/CMakeLists.txt
++++ b/hdi/utils/CMakeLists.txt
+@@ -68,6 +68,7 @@ if(${HDILib_INSTALL})
+     install(EXPORT ${PROJECT}Targets
+             FILE ${PROJECT}Targets.cmake
+             NAMESPACE HDI::
+             DESTINATION lib/cmake/HDILib
+             COMPONENT HDIUTILS_TARGET
+     )
++    set_target_properties(${PROJECT} PROPERTIES INTERFACE_LINK_LIBRARIES "")
+ endif()
+--- a/hdi/data/CMakeLists.txt
++++ b/hdi/data/CMakeLists.txt
+@@ -44,6 +44,7 @@ if(${HDILib_INSTALL})
+     install(EXPORT ${PROJECT}Targets
+             FILE ${PROJECT}Targets.cmake
+             NAMESPACE HDI::
+             DESTINATION lib/cmake/HDILib
+             COMPONENT HDIDATA_TARGET
+     )
++    set_target_properties(${PROJECT} PROPERTIES INTERFACE_LINK_LIBRARIES "")
+ endif()
