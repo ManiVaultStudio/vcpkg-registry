@@ -7,7 +7,7 @@
   "registries": [
     {
       "kind": "filesystem",
-      "path": "../..",
+      "path": "../../",
       "baseline": "default",
       "packages": [
         "biovault-bfloat16", "hdilib","kompute","qt", "vtk"
