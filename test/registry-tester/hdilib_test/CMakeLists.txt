@@ -7,6 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(lz4 CONFIG REQUIRED)
 find_package(flann CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
+find_package(kompute CONFIG REQUIRED)
+find_package(glfw3 REQUIRED)
+
+find_package(OpenMP)
 find_package(HDILib COMPONENTS hdidimensionalityreduction hdiutils hdidata CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
