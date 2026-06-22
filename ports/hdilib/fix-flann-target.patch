@@ -1,3 +1,5 @@
+diff --git a/hdi/data/CMakeLists.txt b/hdi/data/CMakeLists.txt
+index d8824b3..6c278f5 100644
 --- a/hdi/data/CMakeLists.txt
 +++ b/hdi/data/CMakeLists.txt
 @@ -47,4 +47,5 @@ if(${HDILib_INSTALL})
@@ -6,7 +8,8 @@
      )
 +    set_target_properties(${PROJECT} PROPERTIES INTERFACE_LINK_LIBRARIES "")^M
  endif()
-
+diff --git a/hdi/dimensionality_reduction/CMakeLists.txt b/hdi/dimensionality_reduction/CMakeLists.txt
+index 77a3818..77cb45f 100644
 --- a/hdi/dimensionality_reduction/CMakeLists.txt
 +++ b/hdi/dimensionality_reduction/CMakeLists.txt
 @@ -133,6 +133,8 @@ if(${HDILib_INSTALL})
@@ -18,7 +21,8 @@
  endif()
  
  if(USE_VULKAN_KOMPUTE)
-
+diff --git a/hdi/utils/CMakeLists.txt b/hdi/utils/CMakeLists.txt
+index b35d0b0..f190cab 100644
 --- a/hdi/utils/CMakeLists.txt
 +++ b/hdi/utils/CMakeLists.txt
 @@ -71,5 +71,6 @@ if(${HDILib_INSTALL})
