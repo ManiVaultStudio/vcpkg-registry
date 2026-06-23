@@ -1,7 +1,7 @@
 {
   "name": "kompute",
   "version": "0.10.0-a",
-  "port-version": 1,
+  "port-version": 2,
   "description": "General purpose GPU compute framework built on Vulkan to support 1000s of cross vendor graphics cards.",
   "homepage": "https://github.com/KomputeProject/kompute",
   "license": "Apache-2.0",
@@ -12,20 +12,16 @@
     "glfw3",
     {
       "name": "glslang",
-      "features": [ "tools" ],
-      "host": true
+      "features": [ "tools" ]
     },
     {
-      "name": "shaderc",
-      "host": true
+      "name": "shaderc"
     },
     {
-      "name": "vcpkg-cmake",
-      "host": true
+      "name": "vcpkg-cmake"
     },
     {
-      "name": "vcpkg-cmake-config",
-      "host": true
+      "name": "vcpkg-cmake-config"
     }
   ]
 }
