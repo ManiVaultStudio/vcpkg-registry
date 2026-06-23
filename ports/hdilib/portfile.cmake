@@ -8,30 +8,6 @@ vcpkg_from_github(
 #    fix-flann-target.patch
 )
 
-execute_process(COMMAND powershell -Command "Get-ChildItem -Filter glslangValidator.exe -Recurse $pwd" 
-  WORKING_DIRECTORY "$ENV{GITHUB_WORKSPACE}"
-  RESULT_VARIABLE _copy_result
-  OUTPUT_VARIABLE _copy_output
-  ERROR_VARIABLE _copy_error
-)
-
-message(STATUS "Copy output: ${_copy_output}")
-message(STATUS "Copy error: ${_copy_error}")
-message(STATUS "Current installed dir: ${CURRENT_INSTALLED_DIR}")
-message(STATUS "Github workspace: $ENV{GITHUB_WORKSPACE}")
-
-
-execute_process(COMMAND powershell -Command "Get-ChildItem -Path '${CURRENT_INSTALLED_DIR}/../' -Filter 'glsl*.exe' -Recurse | Select-Object FullName" 
-  RESULT_VARIABLE _copy_result
-  OUTPUT_VARIABLE _copy_output
-  ERROR_VARIABLE _copy_error
-)
-
-message(STATUS "Copy output: ${_copy_output}")
-message(STATUS "Copy error: ${_copy_error}")
-message(STATUS "Current installed dir: ${CURRENT_INSTALLED_DIR}")
-message(STATUS "Github workspace: $ENV{GITHUB_WORKSPACE}")
-
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release
@@ -39,8 +15,8 @@ vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   -DENABLE_TESTS=OFF
   -DHDILib_BUILD_TESTS=OFF
   -DFETCHCONTENT_FULLY_DISCONNECTED=OFF
-  -DVulkan_GLSLC_EXECUTABLE=${CURRENT_INSTALLED_DIR}/tools/shaderc/glslc.exe
-  -DVulkan_GLSLANG_VALIDATOR_EXECUTABLE=${CURRENT_INSTALLED_DIR}/tools/glslang/glslangValidator.exe
+  -DVulkan_GLSLC_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/shaderc/glslc${CMAKE_EXECUTABLE_SUFFIX}
+  -DVulkan_GLSLANG_VALIDATOR_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/glslang/glslangValidator${CMAKE_EXECUTABLE_SUFFIX}
 
   )
 
