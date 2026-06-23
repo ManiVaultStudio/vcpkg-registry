@@ -8,6 +8,14 @@ vcpkg_from_github(
 #    fix-flann-target.patch
 )
 
+execute_process(COMMAND powershell -E copy_directory "Get-ChildItem -Filter glslangValidator.exe -Recurse $pwd" 
+  WORKING_DIRECTORY ${SOURCE_PATH}
+  RESULT_VARIABLE _copy_result
+  OUTPUT_VARIABLE _copy_output
+  ERROR_VARIABLE _copy_error
+)
+
+message(STATUS "Copy result: ${_copy_result}")
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release
