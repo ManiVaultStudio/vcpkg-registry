@@ -15,6 +15,9 @@ vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   -DENABLE_TESTS=OFF
   -DHDILib_BUILD_TESTS=OFF
   -DFETCHCONTENT_FULLY_DISCONNECTED=OFF
+  -DVulkan_GLSLC_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/shaderc/glslc.exe
+  -DVulkan_GLSLANG_VALIDATOR_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/glslang/glslangValidator.exe
+
   )
 
 vcpkg_cmake_install()
