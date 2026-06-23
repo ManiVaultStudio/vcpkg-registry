@@ -13,6 +13,10 @@
     { 
       "name": "hdilib",
       "features": [ "kompute" ]
+    },
+    {
+      "name": "glslang",
+      "features": [ "tools" ] 
     }
   ],
   "overrides": [
