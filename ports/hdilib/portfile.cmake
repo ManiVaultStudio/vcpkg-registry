@@ -8,6 +8,12 @@ vcpkg_from_github(
 #    fix-flann-target.patch
 )
 
+if(VCPKG_TARGET_IS_WINDOWS)
+  set(EXE_SUFFIX ".exe")
+else()
+  set(EXE_SUFFIX "")
+endif()
+
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release
@@ -15,8 +21,8 @@ vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   -DENABLE_TESTS=OFF
   -DHDILib_BUILD_TESTS=OFF
   -DFETCHCONTENT_FULLY_DISCONNECTED=OFF
-  -DVulkan_GLSLC_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/shaderc/glslc${CMAKE_EXECUTABLE_SUFFIX}
-  -DVulkan_GLSLANG_VALIDATOR_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/glslang/glslangValidator${CMAKE_EXECUTABLE_SUFFIX}
+  -DVulkan_GLSLC_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/shaderc/glslc${EXE_SUFFIX}
+  -DVulkan_GLSLANG_VALIDATOR_EXECUTABLE=${CURRENT_HOST_INSTALLED_DIR}/tools/glslang/glslangValidator${EXE_SUFFIX}
 
   )
 
