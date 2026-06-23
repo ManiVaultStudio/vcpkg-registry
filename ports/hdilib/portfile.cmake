@@ -8,7 +8,8 @@ vcpkg_from_github(
 #    fix-flann-target.patch
 )
 
-
+find_file(result  NAMES "glslangValidator${VCPKG_HOST_EXECUTABLE_SUFFIX}" PATHS ${CURRENT_HOST_INSTALLED_DIR}/tools/glslang)
+message(STATUS "Found glslangValidator: ${result}")
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release
