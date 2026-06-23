@@ -21,7 +21,7 @@ message(STATUS "Current installed dir: ${CURRENT_INSTALLED_DIR}")
 message(STATUS "Github workspace: $ENV{GITHUB_WORKSPACE}")
 
 
-execute_process(COMMAND powershell -Command "dir /s /b $ENV{GITHUB_WORKSPACE}\\test\\registry-tester\\build\\vcpkg_installed\\*\\tools\\glslang\\glslangValidator.exe" 
+execute_process(COMMAND powershell -Command "dir /s /b ./test/registry-tester/build/vcpkg_installed/*/tools/glslang/glslangValidator.exe" 
   WORKING_DIRECTORY "$ENV{GITHUB_WORKSPACE}"
   RESULT_VARIABLE _copy_result
   OUTPUT_VARIABLE _copy_output
