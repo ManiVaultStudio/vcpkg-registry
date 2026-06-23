@@ -7,7 +7,16 @@
     { "name": "vcpkg-cmake", "host": true },
     { "name": "vcpkg-cmake-config", "host": true },
     "flann",
-    "fmt"
+    "fmt",
+    {
+      "name": "glslang",
+      "features": [ "tools" ],
+      "host": true
+    },
+    {
+      "name": "shaderc",
+      "host": true
+    },
   ],
   "default-features": [
     "kompute"
