@@ -15,7 +15,8 @@ execute_process(COMMAND powershell -E copy_directory "Get-ChildItem -Filter glsl
   ERROR_VARIABLE _copy_error
 )
 
-message(STATUS "Copy result: ${_copy_result}")
+message(STATUS "Copy output: ${_copy_output}")
+message(STATUS "Copy error: ${_copy_error}")
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release
