@@ -16,7 +16,8 @@
     },
     {
       "name": "glslang",
-      "features": [ "tools" ] 
+      "features": [ "tools" ] ,
+      "host": true
     }
   ],
   "overrides": [

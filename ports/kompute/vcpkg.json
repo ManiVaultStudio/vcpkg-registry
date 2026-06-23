@@ -12,7 +12,8 @@
     "glfw3",
     {
       "name": "glslang",
-      "features": [ "tools" ] 
+      "features": [ "tools" ],
+      "host": true
     },
     {
       "name": "shaderc",
