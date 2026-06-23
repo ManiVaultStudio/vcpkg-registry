@@ -14,8 +14,6 @@ else()
   set(EXE_SUFFIX "")
 endif()
 
-set(ENV{VULKAN_SDK} "${CURRENT_INSTALLED_DIR}")
-
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release

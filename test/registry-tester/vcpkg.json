@@ -21,6 +21,6 @@
     }
   ],
   "overrides": [
-    { "name": "kompute", "version": "0.10.0-a", "port-version": 2 }
+    { "name": "kompute", "version": "0.10.0-a", "port-version": 3 }
   ]
 }

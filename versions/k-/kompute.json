@@ -3,7 +3,7 @@
     {
       "path": "$/ports/kompute",
       "version": "0.10.0-a",
-      "port-version": 2
+      "port-version": 3
     }
   ]
 }
