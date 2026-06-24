@@ -21,8 +21,15 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   ${HDILib_LINK_LIBS}
   OpenGL::GL)
 target_include_directories(${PROJECT_NAME} PRIVATE ${HDILib_INCLUDE_DIR})
-# Force the test executable to use the Dynamic CRT (/MD or /MDd) to match vcpkg
+# Force the test executable to use the Dynamic CRT (/MD) to match vcpkg
 set_target_properties(${PROJECT_NAME} PROPERTIES
     MSVC_RUNTIME_LIBRARY "MultiThreadedDLL"
 )
+#  Force Iterator Debug Level to 0 and remove _DEBUG definitions 
+#  so it matches the vcpkg Release library layout perfectly
+target_compile_definitions(registry-tester-hdilib PRIVATE 
+        $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>
+        $<$<CONFIG:Debug>:NDEBUG>
+    )
+# For fmt - used by kompute for logging
 target_compile_options(${PROJECT_NAME} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/utf-8>)
