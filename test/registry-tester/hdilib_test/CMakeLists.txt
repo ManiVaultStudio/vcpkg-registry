@@ -20,4 +20,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   ${HDILib_LINK_LIBS}
   OpenGL::GL)
 target_include_directories(${PROJECT_NAME} PRIVATE ${HDILib_INCLUDE_DIR})
+# Force the test executable to use the Dynamic CRT (/MD or /MDd) to match vcpkg
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL"
+)
 target_compile_options(${PROJECT_NAME} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/utf-8>)
