@@ -6,12 +6,14 @@
   },
   "registries": [
     {
-      "kind": "filesystem",
-      "path": "../../",
+      "kind": "git",
       "baseline": "default",
       "packages": [
         "biovault-bfloat16", "hdilib","kompute","qt", "vtk"
       ]
     }
-  ]
+  ],
+  "overlay-ports": [
+      "../ports"
+    ]
 }
