@@ -8,8 +8,16 @@ vcpkg_from_github(
 #    fix-flann-target.patch
 )
 
+
 find_file(result  NAMES "glslangValidator${VCPKG_HOST_EXECUTABLE_SUFFIX}" PATHS ${CURRENT_HOST_INSTALLED_DIR}/tools/glslang)
 message(STATUS "Found glslangValidator: ${result}")
+
+# Inject the glslangValidator and glslc executables into the PATH so that HDILib can find them
+# in the vulkan_compile_shader_13() function. This uses find_program() which will not work
+# in this instance unless the paths are added to the environment.
+vcpkg_add_to_path("${CURRENT_HOST_INSTALLED_DIR}/tools/glslang")
+vcpkg_add_to_path("${CURRENT_HOST_INSTALLED_DIR}/tools/shaderc")
+
 vcpkg_cmake_configure( SOURCE_PATH "${SOURCE_PATH}"
   OPTIONS
   -DCMAKE_BUILD_TYPE=Release
