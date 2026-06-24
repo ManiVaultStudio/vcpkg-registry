@@ -20,3 +20,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   ${HDILib_LINK_LIBS}
   OpenGL::GL)
 target_include_directories(${PROJECT_NAME} PRIVATE ${HDILib_INCLUDE_DIR})
+target_compile_options(${PROJECT_NAME} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/utf-8>)
