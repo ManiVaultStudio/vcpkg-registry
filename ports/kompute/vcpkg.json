@@ -7,23 +7,21 @@
   "license": "Apache-2.0",
   "dependencies": [
     "fmt",
-    "vulkan-headers",
-    "vulkan-loader",
     "glfw3",
     {
       "name": "glslang",
-      "features": [ "tools" ],
-      "host": true
+      "host": true,
+      "features": [
+        "tools"
+      ]
     },
     {
       "name": "shaderc",
       "host": true
     },
-    {
-      "name": "vcpkg-cmake"
-    },
-    {
-      "name": "vcpkg-cmake-config"
-    }
+    "vcpkg-cmake",
+    "vcpkg-cmake-config",
+    "vulkan-headers",
+    "vulkan-loader"
   ]
 }

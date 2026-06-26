@@ -5,44 +5,67 @@
   "homepage": "https://github.com/Kitware/VTK",
   "license": null,
   "dependencies": [
-        { 
-      "name": "qt", 
-      "features": [ "target-desktop" ] 
+    {
+      "name": "qt",
+      "features": [
+        "target-desktop"
+      ]
     },
-    { "name": "vcpkg-cmake", "host": true },
-    { "name": "vcpkg-cmake-config", "host": true }
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
   ],
   "default-features": [
-            "qt",
-            "mpi",
-            "minimal",
-            "ioxml",
-            "ioexport",
-            "mpi-minimal",
-            "ioxdmf3",
-            "iolegacy",
-            "basic-viewer"
+    "basic-viewer",
+    "ioexport",
+    "iolegacy",
+    "ioxdmf3",
+    "ioxml",
+    "minimal",
+    "mpi",
+    "mpi-minimal",
+    "qt"
   ],
-
   "features": {
-      "qt": {"description": "Build with Qt support"},
-      "mpi": {"description": "Build with MPI support"},
-      "minimal": {"description": "Build minimal version"},
-      "ioxml": {"description": "Build with XML I/O support"},
-      "ioexport": {"description": "Build with export I/O support"},
-      "mpi-minimal": {"description": "Build minimal MPI version"},
-      "ioxdmf3": {"description": "Build with XDMF3 I/O support"},
-      "iolegacy": {"description": "Build with legacy I/O support"},
-      "basic-viewer": {"description": "Build basic viewer"},
-      "thin-arm64": {
-        "description": "Make thin vtk for arm64 on macos",
-        "supports": "osx"
-
-      }, 
-      "thin-x86-64": {
-        "description": "Make thin vtk for x86_64 on macos",
-        "supports": "osx"
-      }
+    "basic-viewer": {
+      "description": "Build basic viewer"
+    },
+    "ioexport": {
+      "description": "Build with export I/O support"
+    },
+    "iolegacy": {
+      "description": "Build with legacy I/O support"
+    },
+    "ioxdmf3": {
+      "description": "Build with XDMF3 I/O support"
+    },
+    "ioxml": {
+      "description": "Build with XML I/O support"
+    },
+    "minimal": {
+      "description": "Build minimal version"
+    },
+    "mpi": {
+      "description": "Build with MPI support"
+    },
+    "mpi-minimal": {
+      "description": "Build minimal MPI version"
+    },
+    "qt": {
+      "description": "Build with Qt support"
+    },
+    "thin-arm64": {
+      "description": "Make thin vtk for arm64 on macos",
+      "supports": "osx"
+    },
+    "thin-x86-64": {
+      "description": "Make thin vtk for x86_64 on macos",
+      "supports": "osx"
+    }
   }
-
 }

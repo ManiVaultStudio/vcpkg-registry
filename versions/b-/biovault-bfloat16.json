@@ -1,8 +1,7 @@
 {
   "versions": [
     {
-      "path": "$/ports/biovault-bfloat16",
-      "git-tree": "cdbfde1d866308e608ed291d535840c72827b5f7",
+      "git-tree": "db99bdc6668331abf055e0418ba9740c6d61b79a",
       "version": "1.0.2",
       "port-version": 0
     }

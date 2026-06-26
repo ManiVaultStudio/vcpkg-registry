@@ -1,8 +1,7 @@
 {
   "versions": [
     {
-      "path": "$/ports/kompute",
-      "git-tree": "a346d623184ff0a73c49bfe93a00cec85b7140b8",
+      "git-tree": "66ac2c4d7ae33b483da93d0ac6308b1fb7702dd2",
       "version": "0.10.0-a",
       "port-version": 3
     }
