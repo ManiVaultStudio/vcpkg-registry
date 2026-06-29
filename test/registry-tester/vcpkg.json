@@ -5,6 +5,7 @@
     },
     { 
       "name": "qt", 
+      "version": "6.9.3",
       "features": [ "target-desktop" ] 
     },
     { 
