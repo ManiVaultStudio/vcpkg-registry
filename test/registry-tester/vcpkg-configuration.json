@@ -8,7 +8,7 @@
     {
       "kind": "git",
       "repository": "https://github.com/ManiVaultStudio/vcpkg-registry",
-      "baseline": "f387521a817f9b2a50840fd4e186e7fa7af4ecfe",
+      "baseline": "c82810cd7343edd82dd5145342b2fe64aaca8377",
       "packages": [
         "biovault-bfloat16", "hdilib","kompute","qt", "vtk"
       ]

@@ -146,10 +146,10 @@ get_arch()
 # get th PLATFORM_NAME variable
 get_platform()
 
+message(STATUS "**************In QT portfile*****************")
 # Invoke your Python script — it must deposit files into
 # ${CURRENT_PACKAGES_DIR} when done
 # python qt-installer.py 6.9.3 windows desktop -a win64_msvc2022_64 -p positioning webchannel webengine virtualkeyboard imageformats datavis3d charts networkauth qt5compat
-
 set(PYTHON3_EXECUTABLE "$ENV{PYTHON3_EXECUTABLE}")
 if(NOT PYTHON3_EXECUTABLE)
   message(FATAL_ERROR "PYTHON3_EXECUTABLE environment variable is not set.")
@@ -175,8 +175,9 @@ execute_process(
   RESULT_VARIABLE result
 )
 
-if(NOT result EQUAL 0)
+
   message(STATUS "qt-installer.py stdout: ${installer_output}")
+if(NOT result EQUAL 0)
   message(STATUS "qt-installer.py stderr: ${installer_error}")
   message(FATAL_ERROR "qt-installer.py failed for triplet ${VCPKG_TARGET_TRIPLET}")
 endif()
